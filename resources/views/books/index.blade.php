@@ -8,17 +8,18 @@
             <th>ISBN kodas</th>
             <th>Apie knygą</th>
             <th>Rašytojas</th>
+            <th>Veiksmai</th>
         </tr>
-        @foreach ($books as $books)
+        @foreach ($books as $book)
         <tr>
-            <td>{{ $books->title }}</td>
-            <td>{{ $books->pages }}</td>
-            <td>{{ $books->isbn }}</td>
-            <td>{!! $books->description !!}</td>
-            <td>{{ $books->author_id }}</td>
+            <td>{{ $book->title }}</td>
+            <td>{{ $book->pages }}</td>
+            <td>{{ $book->isbn }}</td>
+            <td>{!! $book->description !!}</td>
+            <td>{{ $book->author->name }} {{ $book->author->surname }}</td>
             <td>
-                <form action={{ route('books.destroy', $books->id) }} method="POST">
-                    <a class="btn btn-success" href={{ route('books.edit', $books->id) }}>Redaguoti</a>
+                <form action={{ route('books.destroy', $book->id) }} method="POST">
+                    <a class="btn btn-success" href={{ route('books.edit', $book->id) }}>Redaguoti</a>
                     @csrf @method('delete')
                     <input type="submit" class="btn btn-danger" value="Trinti"/>
                 </form>

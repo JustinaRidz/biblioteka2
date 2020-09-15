@@ -5,13 +5,14 @@
         <tr>
             <th>Vardas</th>
             <th>Pavardė</th>
+            <th>Veiksmai</th>
         </tr>
-        @foreach ($author as $author)
+        @foreach ($authors as $author)
         <tr>
             <td>{{ $author->name }}</td>
             <td>{{ $author->surname }}</td><td>
-                <form action={{ route('author.destroy', $author->id) }} method="POST">
-                    <a class="btn btn-success" href={{ route('author.edit', $author->id) }}>Redaguoti</a>
+                <form action={{ route('authors.destroy', $author->id) }} method="POST">
+                    <a class="btn btn-success" href={{ route('authors.edit', $author->id) }}>Redaguoti</a>
                     @csrf @method('delete')
                     <input type="submit" class="btn btn-danger" value="Trinti"/>
                 </form>
@@ -21,7 +22,7 @@
         @endforeach
     </table>
     <div>
-        <a href="{{ route('author.create') }}" class="btn btn-success">Pridėti</a>
+        <a href="{{ route('authors.create') }}" class="btn btn-success">Pridėti</a>
     </div>
 </div>
 @endsection

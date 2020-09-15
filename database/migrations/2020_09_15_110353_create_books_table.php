@@ -13,13 +13,13 @@ class CreateBooksTable extends Migration{
     public function up(){
         Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->integer('pages')->unsigned();;
-            $table->string('isbn');
-            $table->text('description');
-            $table->bigInteger('author_id')->unsigned();
+            $table->string('title')->nullable();
+            $table->integer('pages')->unsigned()->nullable();
+            $table->string('isbn')->nullable();
+            $table->text('description')->nullable();
+            $table->bigInteger('author_id')->unsigned()->nullable();
             $table->timestamps();
-            $table->foreign('author_id')->references('id')->on('authors');
+            $table->foreign('author_id')->references('id')->on('authors')->onDelete('set null');
         });
     }
 

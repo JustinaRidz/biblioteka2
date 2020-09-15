@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Auth;
 // });
 Route::get('/', "AuthorController@index");
 Route::resource('books', 'BookController');
-Route::resource('author', 'AuthorController');
+Route::resource('authors', 'AuthorController');
 
 Auth::routes();
 

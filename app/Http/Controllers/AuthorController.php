@@ -6,15 +6,14 @@ use App\Author;
 use Illuminate\Http\Request;
 
 class AuthorController extends Controller{
-    public function index(Request $request){
+    public function index(){
         
-        return view('authors.index', ['author' => Author::orderBy('name')->get()]);
+        return view('authors.index', ['authors' => Author::orderBy('name')->get()]);
     }
 
     
     public function create(){
-        return view('autors.create');
-
+        return view('authors.create');
     }
 
     
@@ -22,9 +21,11 @@ class AuthorController extends Controller{
         $author = new Author();
         // can be used for seeing the insides of the incoming request
         // var_dump($request->all()); die();
-        $author->fill($request->all());
+        // $author->fill($request->all());
+        $author->name = $request['name'];
+        $author->surname = $request['surname'];
         $author->save();
-        return redirect()->route('author.index');
+        return redirect()->route('authors.index');
 
     }
     
@@ -36,12 +37,12 @@ class AuthorController extends Controller{
     public function update(Request $request, Author $author){
         $author->fill($request->all());
         $author->save();
-        return redirect()->route('author.index');
+        return redirect()->route('authors.index');
 
     }
 
     public function destroy(Author $author){
         $author->delete();
-        return redirect()->route('author.index');
+        return redirect()->route('authors.index');
     }
 }

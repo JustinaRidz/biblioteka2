@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">Pakeiskime informaciją apie autorių</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('author.update', $author->id) }}">
+                    <form method="POST" action="{{ route('authors.update', $author->id) }}">
                         @csrf @method("PUT")
                         <div class="form-group">
                             <label for="">Vardas</label>
@@ -14,7 +14,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Pavardė</label>
-                            <input type="text" name="username" class="form-control" value="{{ $author->username }}">
+                            <input type="text" name="surname" class="form-control" value="{{ $author->surname }}">
                         </div>
                         <button type="submit" class="btn btn-primary">Pakeisti</button>
                     </form>

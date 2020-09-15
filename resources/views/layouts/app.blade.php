@@ -31,7 +31,7 @@
                     <!-- Left Side Of Navbar -->
                       <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a href="{{ route('author.index') }}" class="nav-link">Autoriai</a>
+                            <a href="{{ route('authors.index') }}" class="nav-link">Autoriai</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('books.index') }}" class="nav-link">Knygos</a>
